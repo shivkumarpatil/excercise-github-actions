@@ -1,0 +1,16 @@
+name: Compute Output
+on: push
+jobs:
+  compute-op-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Compute value
+        id: compute_value
+        run: |
+          VALUE=$((2 + 2 ))
+          echo "result=$VALUE" >> $GITHUB_OUTPUT
+      - name: Use computed value
+        run: echo "The computed value is ${{ steps.compute_value.outputs.result }}"
+  
