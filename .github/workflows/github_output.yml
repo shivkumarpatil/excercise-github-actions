@@ -1,0 +1,15 @@
+name: GitHub Output print
+on: workflow_dispatch
+jobs:
+  gh-output:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Generate output
+        id: generate_output
+        run: echo "result=Hello, World!" >> $GITHUB_OUTPUT
+
+      - name: Use output
+        run: echo "${{ steps.generate_output.outputs.result }}"
