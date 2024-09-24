@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        run: actions/checkout@v4
+        uses: actions/checkout@v4
       - name: Generate Output
         id: generate_output
         run: echo "message=Learn ISTIO" >> $GITHUB_OUTPUT
