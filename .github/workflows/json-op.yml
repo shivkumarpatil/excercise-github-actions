@@ -1,0 +1,18 @@
+name: JSON OP example
+on: push
+jobs:
+  json-op-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Generate JSON op
+        id: generate_json
+        run: |
+          echo '{"name": "GitHub Actions", "type": "CI/CD"}' >> output.json
+          echo "json_output=$(cat output.json)" >> GITHUB_OUTPUT
+      - name: Use JSON output
+        run: |
+          echo "The JSON OP IS ${{ steps.generate_json.outputs.json_output }}"
+          echo "Name: $(echo '${{ steps.generate_json.outputs.json_output }}' |jq -r .name)"
+          echo "Type: $(echo '${{ steps.generate_json.outputs.json_output }}' | jq -r .type)"
