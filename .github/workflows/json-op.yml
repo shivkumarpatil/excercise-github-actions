@@ -9,7 +9,7 @@ jobs:
       - name: Generate JSON op
         id: generate_json
         run: |
-          echo '{"name": "GitHub Actions", "type": "CI/CD"}' >> output.json
+          echo '{"name": "JSON OP example", "type": "CI/CD"}' >> output.json
           echo "json_output=$(cat output.json)" >> GITHUB_OUTPUT
       - name: Use JSON output
         run: |
