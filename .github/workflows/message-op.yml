@@ -1,0 +1,14 @@
+name: Simple Output Job
+on: push
+jobs:
+  message-op-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        run: actions/checkout@v3
+      - name: Generate Output
+        id: generate_output
+        run: echo "message=Learn ISTIO" >> $GITHUB_OUTPUT
+      - name: Use message output
+        run: echo "${{ steps.genrate_output.outputs.message }}"
+        
